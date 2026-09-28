@@ -1,0 +1,8 @@
+langgraph
+langchain
+arxiv
+pymupdf
+sentence-transformers
+faiss-cpu
+ollama
+python-dotenv
