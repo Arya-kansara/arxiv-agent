@@ -13,23 +13,21 @@ The user can provide:
 The agent retrieves the paper, downloads the PDF, extracts the text, creates semantic embeddings, stores them in FAISS, generates an Executive Briefing, and answers questions using the paper's content.
 
 ## Architecture
+![Architecture](screenshots/Architecture.png)
 
-State Graph Flow:
+## State Shape
 
-`Understand → Retrieve → Download → Parse → Chunk → Embed → Brief → QA`
-
-### Shared State (AgentState)
-
-* query
-* is_topic_search
-* paper
-* pdf_path
-* full_text
-* chunks
-* vectorstore
-* brief
-* messages
-
+| Field | Purpose |
+|--------|---------|
+| `query` | User input (arXiv ID, URL or Topic) |
+| `is_topic_search` | Detects whether input is a topic or paper ID |
+| `paper` | Stores paper metadata (title, authors, abstract) |
+| `pdf_path` | Path of the downloaded PDF |
+| `full_text` | Extracted text from the PDF |
+| `chunks` | Text chunks created for RAG retrieval |
+| `vectorstore` | FAISS vector database containing embeddings |
+| `brief` | Generated Executive Briefing |
+| `messages` | Conversation history for Question Answering |
 ## Tech Stack
 
 * LangGraph
@@ -83,38 +81,12 @@ python app.py
 
 ## Example Run
 
-### Input
-
-```text
-1706.03762
-```
-
 ### Executive Briefing Output
 
-* Why this paper matters
-* Problem Statement
-* Method / Approach
-* Key Results
-* Limitations
-* Suggested Follow-up Questions
-
+![Briefing](screenshots/Briefing.png)
 ### Sample QA
 
-**Q:** What is multi-head attention?
-
-**A:** Multi-head attention runs several attention heads in parallel, allowing the Transformer to learn different relationships between tokens simultaneously.
-
----
-
-**Q:** Title of the paper?
-
-**A:** Attention Is All You Need
-
----
-
-**Q:** Who won the 2023 Cricket World Cup?
-
-**A:** The retrieved context does not contain the answer.
+![QA](screenshots/QA.png)
 
 ## Design Decisions & Tradeoffs
 
