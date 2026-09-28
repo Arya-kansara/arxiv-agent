@@ -83,7 +83,7 @@ python app.py
 
 ### Executive Briefing Output
 
-![Briefing](screenshots/Briefing.png)
+![Briefing](screenshots/briefing.png)
 ### Sample QA
 
 ![QA](screenshots/QA.png)
